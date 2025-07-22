@@ -1,6 +1,6 @@
 to: pgsql-bugs@lists.postgresql.org
 
-subject: PERFORMANCE regression: EXECUTE loop TRUNCATE loop slower in 17.5 vs 17.2
+subject: [PERFORMANCE] regression: EXECUTE loop TRUNCATE slower in 17.5 vs 17.2
 
 Hi,
 
