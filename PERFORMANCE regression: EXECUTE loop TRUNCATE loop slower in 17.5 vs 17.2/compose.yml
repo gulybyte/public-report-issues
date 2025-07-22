@@ -1,0 +1,39 @@
+volumes:
+  postgres172:
+  postgres175:
+
+services:
+  postgres172:
+    container_name: 'postgres172'
+    image: 'postgres:17.2-alpine'
+    restart: always
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5452:5432'
+    volumes:
+      - postgres172:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  postgres175:
+    container_name: 'postgres175'
+    image: 'postgres:17.5-alpine'
+    restart: always
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5455:5432'
+    volumes:
+      - postgres175:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
